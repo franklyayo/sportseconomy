@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export function middleware(request) {
+export default function proxy(request) {
   // In a full production implementation with Neon Auth, 
   // you would verify the JWT cookie here using Jose or similar Edge-compatible library.
   
