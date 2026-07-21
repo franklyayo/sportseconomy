@@ -1,0 +1,313 @@
+.orgDashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--text-muted);
+}
+
+.mainLayout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+}
+
+.filtersSidebar {
+  padding: 1.5rem;
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+.filterTitle {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.filterGroup {
+  margin-bottom: 1.5rem;
+}
+
+.filterGroup label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+.select {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--surface-border);
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: inherit;
+}
+
+.applyBtn {
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.orgList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.orgCard {
+  display: flex;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.orgCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-color: var(--primary);
+}
+
+.orgLogoContainer {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--surface-border);
+  flex-shrink: 0;
+}
+
+.placeholderLogo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.orgInfo {
+  flex: 1;
+}
+
+.orgName {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.orgDetail {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.complianceTags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.complianceBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.badgeSuccess {
+  background-color: rgba(4, 139, 78, 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(4, 139, 78, 0.2);
+}
+
+.badgeWarning {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.orgAction {
+  padding-left: 1rem;
+  border-left: 1px solid var(--surface-border);
+}
+
+.viewProfile {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 0.875rem;
+}
+
+/* Individual Profile Specific Styles */
+.profileLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: color 0.2s;
+  margin-bottom: -1rem;
+}
+
+.backLink:hover {
+  color: var(--primary);
+}
+
+.profileHero {
+  display: flex;
+  gap: 2rem;
+  padding: 2.5rem;
+  align-items: center;
+}
+
+.profileAvatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  border: 4px solid var(--surface-border);
+}
+
+.profileDetails {
+  flex: 1;
+}
+
+.profileName {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.profileTags {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.profileTag {
+  background-color: var(--surface-border);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.profileActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.sectionBox {
+  padding: 2rem;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.infoLabel {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.infoValue {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.auditItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: var(--background);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--surface-border);
+  margin-bottom: 1rem;
+}
+
+.auditHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auditTitle {
+  font-weight: 700;
+}
+
+.auditDate {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.auditDesc {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}

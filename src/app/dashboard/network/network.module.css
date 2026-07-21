@@ -1,0 +1,363 @@
+.networkDashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--text-muted);
+}
+
+.mainLayout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Main Feed Column */
+.feedColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.composerBox {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.composerHeader {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.currentUserAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+
+.composerInput {
+  flex: 1;
+  border: 1px solid var(--surface-border);
+  background-color: var(--background);
+  color: var(--foreground);
+  padding: 1rem;
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.composerInput:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.composerActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 4rem; /* align with input */
+}
+
+.composerTools {
+  display: flex;
+  gap: 1rem;
+}
+
+.toolBtn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.toolBtn:hover {
+  background-color: var(--surface-border);
+  color: var(--foreground);
+}
+
+.feedDivider {
+  display: flex;
+  align-items: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.feedDivider hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid var(--surface-border);
+  margin: 0 1rem;
+}
+
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.postCard {
+  padding: 1.5rem;
+}
+
+.postHeader {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.authorAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--surface-border);
+  flex-shrink: 0;
+}
+
+.placeholderAvatar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.authorInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.authorNameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.authorName {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.verifiedBadge {
+  color: #3b82f6; /* Blue check */
+  font-size: 0.875rem;
+  display: inline-flex;
+  background-color: rgba(59, 130, 246, 0.1);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.authorRole {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.optionsBtn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  height: fit-content;
+}
+
+.postContent {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  white-space: pre-wrap;
+}
+
+.postMedia {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background-color: var(--surface-border);
+}
+
+.postStats {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--surface-border);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.postActions {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 0.5rem;
+}
+
+.actionBtn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.actionBtn:hover {
+  background-color: var(--surface-border);
+  color: var(--foreground);
+}
+
+/* Sidebar Columns */
+.sidebarColumn {
+  position: sticky;
+  top: 2rem;
+}
+
+.suggestionBox {
+  padding: 1.5rem;
+}
+
+.suggestionTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.suggAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--surface-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.suggInfo {
+  flex: 1;
+  overflow: hidden;
+}
+
+.suggName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.suggRole {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.connectBtn {
+  background: none;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.connectBtn:hover {
+  background-color: rgba(4, 139, 78, 0.1);
+}
+
+.viewAllBtn {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.viewAllBtn:hover {
+  color: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .mainLayout {
+    grid-template-columns: 1fr;
+  }
+  .sidebarColumn {
+    display: none;
+  }
+}

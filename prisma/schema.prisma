@@ -1,0 +1,151 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Talent {
+  id              String   @id @default(uuid())
+  name            String
+  sport           String   @default("Football")
+  position        String?
+  stateOfOrigin   String
+  age             Int
+  height          Float?   // in cm
+  weight          Float?   // in kg
+  preferredFoot   String?  // Right, Left, Both
+  achievements    String[]
+  stats           Json?    // Structured stats, e.g. { goals: 12, assists: 5 }
+  mediaUrl        String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Organization {
+  id               String   @id @default(uuid())
+  name             String
+  orgType          String   // Federation, Club, State Council
+  sport            String   // Football, Basketball, All, etc.
+  complianceMetrics String[] // ["NSC Certified", "Audit Passed"]
+  establishedYear  Int?
+  headquarters     String?
+  contactEmail     String?
+  website          String?
+  logoUrl          String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Event {
+  id               String   @id @default(uuid())
+  title            String
+  description      String
+  sport            String
+  location         String
+  date             DateTime
+  endDate          DateTime?
+  status           String   // Upcoming, Ongoing, Completed
+  bannerUrl        String?
+  participantsLimit Int?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Facility {
+  id               String   @id @default(uuid())
+  name             String
+  description      String
+  facilityType     String   // Stadium, Training Pitch, Indoor Arena, Gym
+  location         String
+  capacity         Int?
+  condition        String   // Excellent, Good, Fair, Poor
+  amenities        String[] // ["Floodlights", "Locker Rooms"]
+  imageUrl         String?
+  bookingAvailable Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model FundingOpportunity {
+  id               String   @id @default(uuid())
+  title            String
+  description      String
+  provider         String
+  fundingType      String   // Grant, Sponsorship, Scholarship, Investment
+  amount           String   // e.g., "Up to ₦5,000,000"
+  deadline         DateTime
+  eligibleEntities String[] // ["Athletes", "Clubs", "Federations"]
+  status           String   // Open, Closed, Upcoming
+  applicationUrl   String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model KnowledgeResource {
+  id               String   @id @default(uuid())
+  title            String
+  description      String
+  mediaType        String   // Video, Article, PDF
+  category         String   // Training, Nutrition, Compliance, Rules
+  thumbnailUrl     String?
+  contentUrl       String?
+  author           String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Post {
+  id               String   @id @default(uuid())
+  content          String
+  authorName       String
+  authorRole       String   // Athlete, Scout, Fan, Coach
+  authorAvatar     String?
+  mediaUrl         String?
+  likes            Int      @default(0)
+  commentsCount    Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model User {
+  id               String   @id // matches the ID from Neon Auth
+  email            String   @unique
+  name             String
+  role             String   // Athlete, Fan, Scout, Administrator, Regulator
+  nin              String?  @unique // National Identification Number
+  isVerified       Boolean  @default(false)
+  avatarUrl        String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model EventRegistration {
+  id               String   @id @default(uuid())
+  eventId          String
+  userId           String   // Mock ID for now
+  status           String   @default("Confirmed")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model FacilityBooking {
+  id               String   @id @default(uuid())
+  facilityId       String
+  userId           String   // Mock ID for now
+  startDate        DateTime
+  endDate          DateTime
+  status           String   @default("Pending")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model FundingApplication {
+  id               String   @id @default(uuid())
+  fundingId        String
+  userId           String   // Mock ID for now
+  status           String   @default("Reviewing")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}

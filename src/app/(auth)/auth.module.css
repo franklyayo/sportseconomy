@@ -1,0 +1,182 @@
+.authLayout {
+  min-height: 100vh;
+  display: flex;
+  background-color: var(--background);
+}
+
+.authImageSide {
+  display: none;
+  flex: 1;
+  position: relative;
+  background-color: var(--primary);
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .authImageSide {
+    display: block;
+  }
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(4, 139, 78, 0.9), rgba(4, 139, 78, 0.6));
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  color: white;
+}
+
+.heroText {
+  position: relative;
+  z-index: 2;
+}
+
+.heroText h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.heroText p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 500px;
+}
+
+.authFormSide {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.authContainer {
+  width: 100%;
+  max-width: 450px;
+}
+
+.logoArea {
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.logoIcon {
+  background-color: var(--primary);
+  color: white;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.authTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.authSubtitle {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: border-color 0.2s;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.formSelect {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.authLinks {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.authLink {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.authLink:hover {
+  text-decoration: underline;
+}
+
+.errorMsg {
+  color: #dc2626;
+  background-color: rgba(239, 68, 68, 0.1);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.successMsg {
+  color: var(--primary);
+  background-color: rgba(4, 139, 78, 0.1);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(4, 139, 78, 0.2);
+}
