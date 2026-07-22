@@ -46,6 +46,10 @@ export async function POST(request) {
     const userId = data.user?.id;
 
     if (userId) {
+      console.log("DEBUG DATABASE_URL TYPE:", typeof process.env.DATABASE_URL);
+      console.log("DEBUG DATABASE_URL EXISTS:", !!process.env.DATABASE_URL);
+      console.log("DEBUG DATABASE_URL LENGTH:", process.env.DATABASE_URL ? process.env.DATABASE_URL.length : 0);
+      
       // Upsert the user into our Prisma database to manually save the custom
       // role and nin fields that Neon Auth wouldn't accept directly.
       await prisma.user.upsert({
