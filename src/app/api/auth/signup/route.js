@@ -18,6 +18,7 @@ export async function POST(request) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Origin": request.headers.get('origin') || 'http://localhost:3000',
       },
       body: JSON.stringify({
         email,
