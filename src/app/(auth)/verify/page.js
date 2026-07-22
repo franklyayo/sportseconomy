@@ -35,7 +35,16 @@ function VerifyForm() {
         }),
       });
 
-      const data = await response.json();
+      const textData = await response.text();
+      let data = {};
+      if (textData) {
+        try {
+          data = JSON.parse(textData);
+        } catch (e) {
+          console.warn("Failed to parse verification response as JSON:", textData);
+          data = { message: textData };
+        }
+      }
 
       if (!response.ok) {
         throw new Error(data.msg || data.message || "Invalid verification code");
