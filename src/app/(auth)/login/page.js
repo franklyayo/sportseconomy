@@ -26,7 +26,7 @@ export default function Login() {
     try {
       const authUrl = process.env.NEXT_PUBLIC_NEON_AUTH_URL;
       
-      const response = await fetch(`${authUrl}/v1/token?grant_type=password`, {
+      const response = await fetch(`${authUrl}/sign-in/email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,16 +47,18 @@ export default function Login() {
       }
 
       if (!response.ok) {
-        throw new Error(data.error_description || data.msg || `Invalid credentials (HTTP ${response.status})`);
+        throw new Error(data.error_description || data.msg || data.message || `Invalid credentials (HTTP ${response.status})`);
       }
 
+      // Extract token safely based on Better Auth's payload structure
+      const token = data.token || (data.session && data.session.token) || "";
+      
       // Here you would typically save the token to a secure cookie via a Next.js API route
       // For demonstration, we will save to localStorage and redirect
-      localStorage.setItem('neon_access_token', data.access_token);
-      localStorage.setItem('neon_refresh_token', data.refresh_token);
+      localStorage.setItem('neon_access_token', token);
       
       // Set a cookie so the middleware can read it
-      document.cookie = `neon_session=${data.access_token}; path=/; max-age=86400; SameSite=Lax`;
+      document.cookie = `neon_session=${token}; path=/; max-age=86400; SameSite=Lax`;
       
       // We simulate setting a session cookie by hitting an internal route, but for now just redirect
       router.push("/dashboard");

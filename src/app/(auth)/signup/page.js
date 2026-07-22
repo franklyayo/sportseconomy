@@ -33,8 +33,8 @@ export default function Signup() {
         throw new Error("Neon Auth URL is not configured in .env");
       }
 
-      // Neon Auth uses GoTrue under the hood
-      const response = await fetch(`${authUrl}/v1/signup`, {
+      // Neon Auth uses Better Auth under the hood
+      const response = await fetch(`${authUrl}/sign-up/email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,11 +42,9 @@ export default function Signup() {
         body: JSON.stringify({
           email: formData.email,
           password: formData.password,
-          data: {
-            name: formData.name,
-            nin: formData.nin,
-            role: formData.role
-          }
+          name: formData.name,
+          nin: formData.nin,
+          role: formData.role
         }),
       });
 
