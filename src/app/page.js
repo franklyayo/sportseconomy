@@ -7,32 +7,50 @@ export default function Home() {
     {
       title: "Talent Discovery",
       description: "National talent database, scouting tools, and performance tracking for grassroot athletes.",
-      icon: "🔍"
+      icon: "🔍",
+      href: "/dashboard/talent"
     },
     {
       title: "Organizations & Federations",
       description: "Directory and compliance hub for all national sports federations, clubs, and state councils.",
-      icon: "🏢"
+      icon: "🏢",
+      href: "/dashboard/organizations"
     },
     {
       title: "Infrastructure Hub",
       description: "Virtual tours, bookings, and availability for stadiums, arenas, and sports facilities nationwide.",
-      icon: "🏟️"
+      icon: "🏟️",
+      href: "/dashboard/infrastructure"
     },
     {
       title: "Social Network for Sports",
       description: "Connect athletes, coaches, officials, and fans. The premier sports LinkedIn for Nigeria.",
-      icon: "👥"
+      icon: "👥",
+      href: "/dashboard/network"
     },
     {
       title: "Training & Development",
       description: "E-learning, certifications, and capacity building programs for coaches and officials.",
-      icon: "🎓"
+      icon: "🎓",
+      href: "/dashboard/training"
     },
     {
       title: "Events & Competitions",
       description: "Live scores, calendar of events, and ticketing for national, state, and local competitions.",
-      icon: "🏆"
+      icon: "🏆",
+      href: "/dashboard/events"
+    },
+    {
+      title: "Financing & Opportunities",
+      description: "Grants, funds & loans, scholarships for athletes, and sponsorship opportunities.",
+      icon: "💰",
+      href: "/dashboard/funding"
+    },
+    {
+      title: "Policies & Knowledge Center",
+      description: "All sports related policies, laws, guidelines, research, statistics and document library.",
+      icon: "📚",
+      href: "/dashboard/knowledge"
     }
   ];
 
@@ -126,11 +144,11 @@ export default function Home() {
           
           <div className={styles.modulesGrid}>
             {modules.map((module, index) => (
-              <div key={index} className={`${styles.moduleCard} card`}>
+              <Link key={index} href={module.href} className={`${styles.moduleCard} card`} style={{textDecoration: 'none'}}>
                 <div className={styles.moduleIcon}>{module.icon}</div>
                 <h3 className={styles.moduleTitle}>{module.title}</h3>
                 <p className={styles.moduleDescription}>{module.description}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

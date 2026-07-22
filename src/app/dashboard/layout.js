@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LogoutButton from "../../components/LogoutButton";
 import styles from "./dashboard.module.css";
 
 export const metadata = {
@@ -57,7 +58,7 @@ export default function DashboardLayout({ children }) {
               <div className={styles.userRole}>Athlete</div>
             </div>
           </div>
-          <Link href="/" className={styles.logoutBtn}>Sign Out</Link>
+          <LogoutButton />
         </div>
       </aside>
       

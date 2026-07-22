@@ -50,10 +50,17 @@ export default function Signup() {
         }),
       });
 
-      const data = await response.json();
+      const text = await response.text();
+      let data = {};
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch (err) {
+        console.error("Failed to parse JSON response:", text);
+        data = { msg: "Invalid response from authentication server." };
+      }
 
       if (!response.ok) {
-        throw new Error(data.msg || data.message || "Failed to sign up");
+        throw new Error(data.msg || data.message || `Failed to sign up (HTTP ${response.status})`);
       }
 
       // If verification is enabled, redirect to verify page with email

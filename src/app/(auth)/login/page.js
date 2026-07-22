@@ -37,16 +37,26 @@ export default function Login() {
         }),
       });
 
-      const data = await response.json();
+      const text = await response.text();
+      let data = {};
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch (err) {
+        console.error("Failed to parse JSON response:", text);
+        data = { msg: "Invalid response from authentication server." };
+      }
 
       if (!response.ok) {
-        throw new Error(data.error_description || data.msg || "Invalid credentials");
+        throw new Error(data.error_description || data.msg || `Invalid credentials (HTTP ${response.status})`);
       }
 
       // Here you would typically save the token to a secure cookie via a Next.js API route
       // For demonstration, we will save to localStorage and redirect
       localStorage.setItem('neon_access_token', data.access_token);
       localStorage.setItem('neon_refresh_token', data.refresh_token);
+      
+      // Set a cookie so the middleware can read it
+      document.cookie = `neon_session=${data.access_token}; path=/; max-age=86400; SameSite=Lax`;
       
       // We simulate setting a session cookie by hitting an internal route, but for now just redirect
       router.push("/dashboard");

@@ -13,7 +13,6 @@ export default function proxy(request) {
   // bbecause we are currently relying on localStorage in the client components.
   // In production, uncomment the below to enforce server-side protection:
 
-  /*
   if (!hasSession && !isAuthRoute && request.nextUrl.pathname.startsWith('/dashboard')) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
@@ -21,7 +20,6 @@ export default function proxy(request) {
   if (hasSession && isAuthRoute) {
     return NextResponse.redirect(new URL('/dashboard', request.url));
   }
-  */
 
   return NextResponse.next();
 }
