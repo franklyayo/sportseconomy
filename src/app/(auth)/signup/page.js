@@ -27,14 +27,9 @@ export default function Signup() {
     setError("");
 
     try {
-      const authUrl = process.env.NEXT_PUBLIC_NEON_AUTH_URL;
-      
-      if (!authUrl) {
-        throw new Error("Neon Auth URL is not configured in .env");
-      }
-
-      // Neon Auth uses Better Auth under the hood
-      const response = await fetch(`${authUrl}/sign-up/email`, {
+      // Call our internal Next.js API route which proxies to Neon Auth
+      // and safely handles custom fields like 'role' and 'nin'
+      const response = await fetch(`/api/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,17 +43,10 @@ export default function Signup() {
         }),
       });
 
-      const text = await response.text();
-      let data = {};
-      try {
-        data = text ? JSON.parse(text) : {};
-      } catch (err) {
-        console.error("Failed to parse JSON response:", text);
-        data = { msg: "Invalid response from authentication server." };
-      }
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.msg || data.message || `Failed to sign up (HTTP ${response.status})`);
+        throw new Error(data.error || data.message || `Failed to sign up (HTTP ${response.status})`);
       }
 
       // If verification is enabled, redirect to verify page with email

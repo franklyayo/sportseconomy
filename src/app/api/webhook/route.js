@@ -38,14 +38,27 @@ export async function POST(request) {
 
     // Sync the user to our Prisma database using upsert
     // Upsert ensures we create the user if they don't exist, or update them if they do.
+    
+    // Prepare update data carefully so we don't overwrite custom fields (nin, role) with fallbacks
+    // if the webhook payload doesn't contain them (since Neon Auth strips unknown fields).
+    const updateData = {
+      email: String(email),
+      name: String(name),
+    };
+    
+    // Only update role if it's explicitly provided and not the fallback
+    if (metadata.role || userData.role) {
+      updateData.role = String(role);
+    }
+    
+    // Only update nin if it exists
+    if (nin) {
+      updateData.nin = String(nin);
+    }
+
     const user = await prisma.user.upsert({
       where: { id: String(id) },
-      update: {
-        email: String(email),
-        name: String(name),
-        role: String(role),
-        nin: nin ? String(nin) : null,
-      },
+      update: updateData,
       create: {
         id: String(id),
         email: String(email),
