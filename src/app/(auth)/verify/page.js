@@ -23,15 +23,14 @@ function VerifyForm() {
     try {
       const authUrl = process.env.NEXT_PUBLIC_NEON_AUTH_URL;
       
-      const response = await fetch(`${authUrl}/v1/verify`, {
+      const response = await fetch(`${authUrl}/email-otp/verify-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          type: "signup",
-          email,
-          token: code
+          email: email,
+          otp: code
         }),
       });
 
